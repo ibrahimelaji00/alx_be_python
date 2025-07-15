@@ -3,25 +3,19 @@ task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Message initial
-message = ""
-
-# Match-case selon la priorité
+# Générer le message exact
 match priority:
     case "high":
-        message = f"'{task}' is a high priority task"
+        base_message = f"'{task}' is a high priority task"
     case "medium":
-        message = f"'{task}' is a medium priority task"
+        base_message = f"'{task}' is a medium priority task"
     case "low":
-        message = f"'{task}' is a low priority task"
+        base_message = f"'{task}' is a low priority task"
     case _:
-        message = f"'{task}' has an unknown priority"
+        base_message = f"'{task}' has an unknown priority"
 
-# Condition selon la contrainte de temps
+# Construire la phrase finale avec le bon format
 if time_bound == "yes":
-    message += " that requires immediate attention today!"
+    print(f"Reminder: {base_message} that requires immediate attention today!")
 else:
-    message += ". Consider completing it when you have free time."
-
-# Affichage final
-print("\nReminder:", message)
+    print(f"Note: {base_message}. Consider completing it when you have free time.")
